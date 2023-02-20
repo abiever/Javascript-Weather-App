@@ -1,0 +1,270 @@
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+body {
+  background-image: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%); 
+  background-size: cover;
+  height: 100%;
+  color: white;
+  font-family: "Comfortaa", sans-serif;
+}
+
+.container {
+  height: 97vh;
+  min-height: 675px; /*important for overall sizing*/
+  padding: 20px;
+  margin: 10px;
+  border-radius: 8px;
+  width: 97vw;
+  background-color: rgba(227, 227, 227, 0.276);
+  backdrop-filter: blur(2px);
+  position: relative;
+}
+
+.day-section-container {
+  width: 97%;
+  height: 40%;
+  min-height: 240px; /*important for overall sizing*/
+  position: absolute; /*setting this to absolute seems to get the border to be affected by resizing of its container*/
+  margin: auto;
+  padding-bottom: 10px;
+  justify-content: center;
+  align-items: center;
+  /*border: 4px solid white;*/ /*just use for sizing purposes*/
+  top: 78%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hour-section-container {
+  width: 97%;
+  height: 40%;
+  min-height: 240px; /*important for overall sizing*/
+  position: absolute; /*setting this to absolute seems to get the border to be affected by resizing of its container*/
+  margin: auto;
+  padding-bottom: 10px;
+  justify-content: center;
+  align-items: center;
+  /*border: 4px solid white;*/ /*just use for sizing purposes*/
+  top: 78%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none; /*to make sure it only displays after mouseover event*/
+  overflow: hidden; /*Can eventually work on this to create scrolling functionality*/
+}
+
+.day-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 105px);
+  gap: 4rem; /*how much each "card" is separated from the others*/
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  margin-bottom: 8rem;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 48%;
+  left: 48.5%;
+  transform: translate(-50%, -50%);
+}
+
+.hour-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 105px);
+  gap: 4rem; /*how much each "card" is separated from the others*/
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  margin-bottom: 8rem;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 48%;
+  left: 48.5%;
+  transform: translate(-50%, -50%);
+}
+
+.day-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto; /*setting this to auto gets the cards nice and centered overall*/
+  border: 1px solid white;
+  border-radius: 0.25rem;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  /*I'm liking this with no border, I think*/
+  width: 9rem;
+}
+
+.hour-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto; /*setting this to auto gets the cards nice and centered overall*/
+  border: 1px solid white;
+  border-radius: 0.25rem;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  /*I'm liking this with no border, I think*/
+  width: 9rem;
+}
+
+.day-card-day {
+  font-size: 0.85rem;
+  color: rgb(241, 240, 240);
+  margin-top: 0.5rem;
+  padding-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.hour-card-day {
+  font-size: 0.85rem;
+  color: rgb(241, 240, 240);
+  margin-top: 0.5rem;
+  padding-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.hour-card-temp-time-container {
+  text-align: center;
+  width: 100%;
+}
+
+#hour-card-time {
+  text-transform: lowercase;
+  margin-right: 6px;
+}
+
+#hour-card-temp {
+  margin-left: 6px;
+}
+
+.blurred { /*can be added to body via 'class'*/
+  filter: blur(3px);
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.header-title-data {
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  border-bottom: 1px solid rgb(241, 240, 240);
+  width: 50%;
+  height: 100px;
+  margin-left: 20px;
+  margin-right: 20px;
+  position: relative;
+}
+
+.location {
+  font-weight: 700;
+  font-size: 2.7rem;
+  position: absolute;
+  width: 500px;
+  text-align: center;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.current-time {
+  font-size: larger;
+  font-weight: 500;
+  position: absolute;
+  text-align: center;
+  padding-top: 15px;
+  width: 500px;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.header-left {
+  display: flex;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+}
+
+.weather-icon {
+  width: 125px;
+  height: 125px;
+  object-fit: contain;
+  padding-bottom: 10px; /*puts space between the small icon and the words below it*/
+}
+
+.weather-icon.large {
+  width: 180px;
+  height: 180px;
+}
+
+.header-current-temp {
+  font-size: 2.4rem;
+  margin-left: 1rem;
+}
+
+.header-right {
+  display: grid;
+  width: 50%;
+  margin-right: 1rem;
+  justify-content: space-around;
+  gap: 1.5rem;
+  padding-right: 0px;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(2, auto);
+}
+
+.info-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.label {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 0.85rem;
+  padding-bottom: 6px;
+  color: rgb(241, 240, 240);
+}
+
+.value-sub-info {
+  font-weight: lighter;
+  font-size: 0.75rem;
+}
+
+.menu-container {
+  position: absolute;
+  top: 58%;
+  left: 50%;
+  width: 100%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.daily-menu-selector {
+  font-size: larger;
+  font-weight: 500;
+  border-bottom: 1px solid white;
+  display: inline-block;
+  width: 40%;
+  height: 25px;
+  text-align: center;
+}
+
+.hourly-menu-selector {
+  font-size: larger;
+  font-weight: 500;
+  border-bottom: 0px solid white;
+  display: inline-block;
+  width: 40%;
+  height: 25px;
+  text-align: center;
+}

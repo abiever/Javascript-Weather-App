@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa:400,500,600,700" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="style.css">
+    <script type="module" src="/main.js"></script>
+  <script type="module" src="/iconMap.js"></script>
+  <script type="module" src="/weather.js"></script>
+  </head>
+  <body class="blurred">
+    <div style="display: none;">Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+  <div class="container"> 
+    <header class="header">
+      <div class="header-left"> <!--change this to "header-top" once you reformat it to be on top-->
+        <img class="weather-icon large" src="icons/clear-sky.png" data-current-icon />
+        <div class="header-current-temp">
+          <span data-current-temp>31</span>&deg; <!--the "&deg" is outside of the span so that it doesn't change when the number does-->
+        </div>
+      </div>
+      <div class="header-title-data">
+        <div id="location" class="location"></div> <!--These two display user's current time/location-->
+        <div id="current-time" class="current-time"></div>
+      </div>
+      <div class="header-right"> <!--change this to "header-bottom" once you reformat it to be on top-->
+        <div class="info-group">
+          <div class="label">High</div>
+          <div><span data-current-high>32</span>&deg;</div>
+        </div>
+        <div class="info-group">
+          <div class="label">Actual</div>
+          <div><span data-current-fl-high>27</span>&deg;</div>
+        </div>
+        <div class="info-group">
+          <div class="label">Wind</div>
+          <div><span data-current-wind>9</span><span class="value-sub-info">mph</span></div>
+        </div>
+        <div class="info-group">
+          <div class="label">Low</div>
+          <div><span data-current-low>12</span>&deg;</div>
+        </div>
+        <div class="info-group">
+          <div class="label">Actual</div>
+          <div><span data-current-fl-low>9</span>&deg;</div>
+        </div>
+        <div class="info-group">
+          <div class="label">Precip</div>
+          <div><span data-current-precip>0.1</span><span class="value-sub-info">in</span></div>
+        </div>
+      </div>
+    </header>
+
+    <div class="menu-container">
+      <div class="daily-menu-selector" id="daily-menu-selector" onmouseover="showDaily();">Daily</div>
+      <div class="hourly-menu-selector" id="hourly-menu-selector" onmouseover="showHourly();">Hourly</div>
+      
+    </div>
+
+    <div class="day-section-container" id="day-section-container">
+      <div class="day-section" data-day-section>
+      <div class="day-card">
+        <img src="/icons/clear-sky.png" class="weather-icon">
+        <div class="day-card-day">Monday</div>
+        <div>32&deg;</div>
+      </div>
+      <div class="day-card">
+        <img src="/icons/clear-sky.png" class="weather-icon">
+        <div class="day-card-day">Tuesday</div>
+        <div>32&deg;</div>
+      </div>
+      <div class="day-card">
+        <img src="/icons/clear-sky.png" class="weather-icon">
+        <div class="day-card-day">Wednesday</div>
+        <div>32&deg;</div>
+      </div>
+      <div class="day-card">
+        <img src="/icons/clear-sky.png" class="weather-icon">
+        <div class="day-card-day">Thursday</div>
+        <div>32&deg;</div>
+      </div>
+      <div class="day-card">
+        <img src="/icons/clear-sky.png" class="weather-icon">
+        <div class="day-card-day">Friday</div>
+        <div>32&deg;</div>
+      </div>
+      <div class="day-card">
+        <img src="/icons/clear-sky.png" class="weather-icon">
+        <div class="day-card-day">Saturday</div>
+        <div>32&deg;</div>
+      </div>
+      <div class="day-card">
+        <img src="/icons/clear-sky.png" class="weather-icon">
+        <div class="day-card-day">Sunday</div>
+        <div>32&deg;</div>
+      </div>
+      </div>
+    </div>
+
+    <div class="hour-section-container" id="hour-section-container">
+      <div class="hour-section" data-hour-section>
+        <div class="hour-card">
+          <img src="/icons/clear-sky.png" class="weather-icon">
+          <div class="hour-card-day">Monday</div>
+          <div class="hour-card-temp">32&deg;</div>
+        </div>
+      </div>
+    </div>
+
+    <template id="day-card-template">
+      <div class="day-card">
+        <img data-icon class="weather-icon">
+        <div class="day-card-day" data-date></div>
+        <div><span data-temp></span><span>&deg;/<span data-temp-lo></span></span>&deg;</div>
+      </div>
+    </template>
+    
+    <template id="hour-row-template">
+      <div class="hour-card">
+        <img data-icon class="weather-icon">
+        <div class="hour-card-day" data-day></div>
+        <!--the above data-"" needed to have "day" in order to communicate properly with the JS file code renderHourlyWeather()-->
+        <div class="hour-card-temp-time-container">
+          <div><span id="hour-card-time" data-time></span>|<span id="hour-card-temp" data-temp></span><span>&deg;</span></div>
+          
+        </div>
+      </div>
+    </template>
+
+    
+    <!--for displaying the diffrent weather menus-->
+    <script>
+      //for display the daily/hourly sections depending on mouseover
+      var dailyMenu = document.getElementById('daily-menu-selector');
+      var hourlyMenu = document.getElementById('hourly-menu-selector');
+      var daySection = document.getElementById('day-section-container');
+      var hourlySection = document.getElementById('hour-section-container');
+
+      function showHourly() {
+        daySection.style.display = 'none';
+        hourlySection.style.display = 'block';
+        dailyMenu.style.borderBottom = '0px';
+        hourlyMenu.style.borderBottom = '1px solid white';
+      };
+
+      function showDaily() {
+        hourlySection.style.display = 'none';
+        daySection.style.display = 'block';
+        hourlyMenu.style.borderBottom = '0px';
+        dailyMenu.style.borderBottom = '1px solid white';
+      }
+    </script>
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.3/axios.min.js" integrity="sha512-wS6VWtjvRcylhyoArkahZUkzZFeKB7ch/MHukprGSh1XIidNvHG1rxPhyFnL73M0FC1YXPIXLRDAoOyRJNni/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  </body>
+</html>
