@@ -24,3 +24,4 @@ Additionally, I strove to build a design that was completely my own — and comp
 
 • The site is not currently optimized for mobile
 • There are some spacing and resizing issues on the daily/hourly sections that become apparent when the browser window is made smaller
+• The currently displayed location does not always appear to be as accurate as it should be (i.e. Displayed weather is for a nearby city, rather than the user's actual location)
