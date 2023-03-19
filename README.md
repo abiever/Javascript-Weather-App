@@ -14,12 +14,13 @@ Additionally, I strove to build a design that was entirely my own — and comple
 
 # Challenges Overcome & Lessons Learned
 
-• Learning how to work with an API and troubleshooting issues that arose with weather data not being communicated correctly
-• Utilizing a second API for geolocation via IP Address to then display the user's city name and current time/date
-• Understanding how to use CSS to force specific HTML elements to be responsive only to their respective containers
+• Learning how to work with an API and troubleshooting issues that arose with weather data not being communicated correctly <br>
+• Utilizing a second API for geolocation via IP Address to then display the user's city name and current time/date <br>
+• Understanding how to use CSS to force specific HTML elements to be responsive only to their respective containers <br>
 
 # Current Known Issues
 
-• The site is not currently optimized for mobile
-• There are some spacing and resizing issues on the daily/hourly sections that become apparent when the browser window is made smaller
+• The site is not currently optimized for mobile <br>
+• There are some spacing and resizing issues on the daily/hourly sections that become apparent when the browser window is made smaller <br>
 • The currently displayed location does not always appear to be as accurate as it should be (i.e. Displayed weather is for a nearby city, rather than the user's actual location)
+<br>
